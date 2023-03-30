@@ -1,8 +1,19 @@
 {
   "products": [
     {
-      "id": 3,
-      "name": "ahihi3"
+      "name": "new product 239 udpate",
+      "price": "232322",
+      "id": 3
+    },
+    {
+      "name": "new product 232",
+      "price": "232322",
+      "id": 4
+    },
+    {
+      "name": "new product 3",
+      "price": "22222",
+      "id": 5
     }
   ]
 }
