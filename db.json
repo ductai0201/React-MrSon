@@ -6,14 +6,19 @@
       "id": 4
     },
     {
-      "name": "new product 3 update",
+      "name": "new product 3 update lần n",
       "price": "22222",
       "id": 5
     },
     {
-      "name": "new product ahihihi",
-      "price": "2122223",
+      "name": "product new",
+      "price": "23999",
       "id": 6
+    },
+    {
+      "name": "prduct ahihi",
+      "price": "2222",
+      "id": 7
     }
   ]
 }

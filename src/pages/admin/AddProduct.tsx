@@ -34,15 +34,22 @@ import { useNavigate } from "react-router-dom";
 //     </div>
 //   );
 // };
+interface IProduct {
+  id: number;
+  name: string;
+  price: number;
+}
 
-const AddProductPage = (props) => {
+interface Iprop {
+  onAdd: (product: IProduct) => void;
+}
+const AddProductPage = (props: Iprop) => {
   console.log(props);
-  const {register,handleSubmit} = useForm()
-  const onHandleSubmit = (data)=>{
-      props.onAdd(data)
-      
-  }  
-  
+  const { register, handleSubmit } = useForm();
+  const onHandleSubmit = (data) => {
+    props.onAdd(data);
+  };
+
   return (
     <div>
       <form action="" onSubmit={handleSubmit(onHandleSubmit)}>
