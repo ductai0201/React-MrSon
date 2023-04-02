@@ -13,6 +13,8 @@ import ProductDetail from "./pages/ProductDetail";
 import ProductPage from "./pages/ProductPage";
 function App() {
   const [products, setProduct] = useState([]);
+  console.log(products);
+
   useEffect(() => {
     fetch("http://localhost:3000/products")
       .then((Response) => Response.json())
@@ -39,32 +41,43 @@ function App() {
 Tại component AddProduct.tsx, ta cần khai báo một props là onAdd, truyền vào đó hàm onHandleAdd. Khi props onAdd được gọi, hàm onHandleAdd sẽ được kích hoạt và sản phẩm sẽ được thêm vào cơ sở dữ liệu.   */
   const onHandleUpdate = (product) => {
     updateProduct(product).then(() =>
-      console.log(
+      setProduct(
         products.map((item) => (item.id == product.id ? product : item))
       )
     );
   };
   return (
     <div className="App">
-        <Routes>
-          <Route path="/" element={<WebsiteLayout/>}>
-              <Route index element={<HomePage/>}/>
-              <Route path="/products"> 
-                <Route index element={<ProductPage products={products} onRemove={onHandleRemove}/>}/>
-                <Route path=":id" element={<ProductDetail product={products}/>}/>
-              </Route>
-          </Route> 
-          <Route path="/admin" element={<AdminLayout/>}> 
-            <Route index element={<DashBoard/>}/>
-            <Route path="products">
-              <Route index element={<ProductManagement/>}/>
-              <Route path="add" element={<AddProductPage onAdd={onHandleAdd}/>}/>
-              <Route path=":id/update" element={<UpdateProduct products={products} onUpdate={onHandleUpdate}/>}/>
-            </Route>
+      <Routes>
+        <Route path="/" element={<WebsiteLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="/products">
+            <Route
+              index
+              element={
+                <ProductPage products={products} onRemove={onHandleRemove} />
+              }
+            />
+            <Route path=":id" element={<ProductDetail product={products} />} />
           </Route>
-
-        </Routes>
-      
+        </Route>
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<DashBoard />} />
+          <Route path="products">
+            <Route index element={<ProductManagement />} />
+            <Route
+              path="add"
+              element={<AddProductPage onAdd={onHandleAdd} />}
+            />
+            <Route
+              path=":id/update"
+              element={
+                <UpdateProduct products={products} onUpdate={onHandleUpdate} />
+              }
+            />
+          </Route>
+        </Route>
+      </Routes>
     </div>
   );
 }
