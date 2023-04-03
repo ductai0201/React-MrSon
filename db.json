@@ -6,7 +6,7 @@
       "id": 4
     },
     {
-      "name": "new product 3 update lần n",
+      "name": "new product 3 update lần n + 2",
       "price": "22222",
       "id": 5
     },
@@ -16,9 +16,24 @@
       "id": 6
     },
     {
-      "name": "prduct ahihi",
+      "name": "prduct ahihi 2",
       "price": "2222",
       "id": 7
+    },
+    {
+      "name": "product super vip",
+      "price": "666666",
+      "id": 8
+    },
+    {
+      "name": "product super vip 2",
+      "price": "zaaaaaaaaaaaaaaa",
+      "id": 9
+    },
+    {
+      "name": "product veget",
+      "price": "23000",
+      "id": 10
     }
   ]
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
-
+import { useNavigate } from "react-router-dom";
 // const UpdateProduct = (props) => {
 //   const { id } = useParams();
 //   const [product, setProduct] = useState({});
@@ -47,6 +47,7 @@ import { useForm } from "react-hook-form";
 // };
 const UpdateProduct = ({ onUpdate, products }) => {
   const { register, handleSubmit, reset } = useForm();
+  const navigate = useNavigate();
   const { id } = useParams();
   console.log(id);
   useEffect(() => {
@@ -56,6 +57,7 @@ const UpdateProduct = ({ onUpdate, products }) => {
 
   const onHandleSubmit = (data) => {
     onUpdate(data);
+    navigate("/admin/products");
   };
   return (
     <div>

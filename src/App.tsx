@@ -13,7 +13,6 @@ import ProductDetail from "./pages/ProductDetail";
 import ProductPage from "./pages/ProductPage";
 function App() {
   const [products, setProduct] = useState([]);
-  console.log(products);
 
   useEffect(() => {
     fetch("http://localhost:3000/products")
@@ -64,7 +63,7 @@ Tại component AddProduct.tsx, ta cần khai báo một props là onAdd, truy�
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<DashBoard />} />
           <Route path="products">
-            <Route index element={<ProductManagement />} />
+            <Route index element={<ProductManagement products={products} />} />
             <Route
               path="add"
               element={<AddProductPage onAdd={onHandleAdd} />}

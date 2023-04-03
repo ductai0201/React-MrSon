@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-
+import { Button, Checkbox, Form, Input } from 'antd';
 // const AddProductPage = (props) => {
 //   console.log(props);
 
@@ -43,20 +43,64 @@ interface IProduct {
 interface Iprop {
   onAdd: (product: IProduct) => void;
 }
+
+
 const AddProductPage = (props: Iprop) => {
   console.log(props);
-  const { register, handleSubmit } = useForm();
-  const onHandleSubmit = (data) => {
-    props.onAdd(data);
+  
+  // console.log(props);
+  // const { register, handleSubmit } = useForm();
+  // const onHandleSubmit = (data) => {
+  //   props.onAdd(data);
+  // };
+
+  const onFinish = (values: any) => {
+    props.onAdd(values)
+  };
+  
+  const onFinishFailed = (errorInfo: any) => {
+    console.log('Failed:', errorInfo);
   };
 
   return (
     <div>
-      <form action="" onSubmit={handleSubmit(onHandleSubmit)}>
+      {/* <form action="" onSubmit={handleSubmit(onHandleSubmit)}>
         <input type="text" {...register("name")} placeholder="Product name" />
         <input type="number" {...register("price")} />
         <button type="submit">Add new product</button>
-      </form>
+      </form> */}
+      <Form
+        name="basic"
+        labelCol={{ span: 8 }}
+        wrapperCol={{ span: 16 }}
+        style={{ width: 1000 }}
+        initialValues={{ remember: true }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        autoComplete="off"
+      >
+        <Form.Item
+          label="Name"
+          name="name"
+          rules={[{ required: true, message: "Please input your name!" }]}
+        >
+          <Input />
+        </Form.Item>
+
+        <Form.Item
+          label="Price"
+          name="price"
+          rules={[{ required: true, message: "Please input your price!" }]}
+        >
+          <Input.Password />
+        </Form.Item>
+
+        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
+      </Form>
     </div>
   );
 };
